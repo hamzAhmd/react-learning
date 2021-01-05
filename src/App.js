@@ -1,41 +1,36 @@
-import React, {useState} from "react";
-import Sonss from "./child1";
-import Counterapp from "./counterapp";
+import React,{useReducer} from 'react';
+const ACTIONS = {
+    INCREMENT:'incrementcount',
+    DECREMENT:'decrementcount'
+}
 
-
-function App() {
-    const count = useState(()=>{
-        return (25*2*2*424*42)})
+function reducer(state,action) {
+    switch(action.type){
+        case ACTIONS.DECREMENT:
+        return  {count:state.count-1}
+        case ACTIONS.INCREMENT:
+        return  {count:state.count+1}
+        default:
+            return {state}
+    }
+    
+}
+export default function App() {
+  const [state,dispatch] = useReducer(reducer,{count:0})
+    function decrementcount (){
+    dispatch({type:ACTIONS.DECREMENT})
+    }
+  function incrementcount (){    
+    dispatch({type:ACTIONS.INCREMENT})
+  }
   return (
-    <Counterapp.Provider value = {count}>
-    <div>
-      <Sonss/>
+    <div >
+      <button onClick = {incrementcount}>+</button>
+      <span>............</span>
+      <button onClick = {decrementcount}>-</button>
+    <h1>{state.count}</h1>
     </div>
-     </Counterapp.Provider>
   );
 }
 
-export default App;
 
-// **COUNTER APP USING USESTATE HOOK**
-// import React,{useState} from 'react';
-// function App() {
-//   const [count, setCount] = useState(()=>{
-//         return 4
-//   })
-//     function decrementcount (){
-//     setCount(preCount => preCount - 1)
-//   }
-//   function incrementcount (){
-//     setCount(preCount => preCount + 1)
-//   }
-//   return (
-//     <div >
-//       <button onClick = {incrementcount}>+</button>
-//       <span>{count}</span>
-//       <button onClick = {decrementcount}>-</button>
-//     </div>
-//   );
-// }
-
-// export default App;
