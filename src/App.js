@@ -1,26 +1,41 @@
-import React,{useState} from 'react';
+import React, {useState} from "react";
+import Sonss from "./child1";
+import Counterapp from "./counterapp";
+
+
 function App() {
-  const [count, setCount] = useState(()=>{
-    console.log('run function') //if require to add computational functionalities
-    return 4                   // we use function in a useState
-  })
-  const [theme, setTheme] = useState('blue')
-  function decrementcount (){
-    setCount(preCount => preCount - 1)
-    setTheme('blue')
-  }
-  function incrementcount (){
-    setCount(preCount => preCount + 1)
-    setTheme('red')
-  }
+    const count = useState(()=>{
+        return (25*2*2*424*42)})
   return (
-    <div >
-      <button onClick = {incrementcount}>+</button>
-      <span>{count}</span>
-      <span>{theme}</span>
-      <button onClick = {decrementcount}>-</button>
+    <Counterapp.Provider value = {count}>
+    <div>
+      <Sonss/>
     </div>
+     </Counterapp.Provider>
   );
 }
 
 export default App;
+
+// **COUNTER APP USING USESTATE HOOK**
+// import React,{useState} from 'react';
+// function App() {
+//   const [count, setCount] = useState(()=>{
+//         return 4
+//   })
+//     function decrementcount (){
+//     setCount(preCount => preCount - 1)
+//   }
+//   function incrementcount (){
+//     setCount(preCount => preCount + 1)
+//   }
+//   return (
+//     <div >
+//       <button onClick = {incrementcount}>+</button>
+//       <span>{count}</span>
+//       <button onClick = {decrementcount}>-</button>
+//     </div>
+//   );
+// }
+
+// export default App;
